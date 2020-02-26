@@ -1,10 +1,10 @@
 /*
 ============================================
-; Title: Assignment 1.3
+; Title: Assignment 2.3
 ; Author: Ashleigh Lyman
-; Date: 20 February 2020
+; Date: 26 February 2020
 ; Modified By:
-; Description: Using Modules
+; Description: Routes
 ;===========================================
 */
 
@@ -20,7 +20,7 @@ var http = require('http');
 
 var app = express();
 
-//routes
+//routes to catch URL messages
 app.get('/', function(req, res) {
     res.end('Welcome to the homepage.\n');
 
