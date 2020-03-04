@@ -1,3 +1,20 @@
+/*
+============================================
+; Title: Assignment 3.2
+; Author: Ashleigh Lyman
+; Date: 03 March 2020
+; Modified By:
+; Description: Morgan-logging
+;===========================================
+*/
+
+//Start Program
+
+//Header
+var header = require('../Lyman-header');
+console.log(header.display('Ashleigh', 'Lyman', 'Exercise 3.2 - MorganLogging'));
+
+
 var express = require("express");
 var http = require("http");
 var path = require("path");
