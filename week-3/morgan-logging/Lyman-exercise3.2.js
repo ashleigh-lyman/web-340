@@ -14,12 +14,13 @@
 var header = require('../Lyman-header');
 console.log(header.display('Ashleigh', 'Lyman', 'Exercise 3.2 - MorganLogging'));
 
-
+//requires
 var express = require("express");
 var http = require("http");
 var path = require("path");
 var logger = require("morgan");
 
+//app variable for express
 var app = express();
 
 app.set('views', path.resolve(__dirname, 'views')); // Tell Express the views are in the 'views' directory
