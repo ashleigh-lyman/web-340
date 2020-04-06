@@ -12,24 +12,24 @@
 
 //Header
 var header = require('../Lyman-header');
-console.log(header.display('Ashleigh', 'Lyman', 'Exercise 3.2 - MorganLogging'));
+console.log(header.display('Ashleigh', 'Lyman', 'Exercise 7.2 - TDD test case'));
 
+var assert = require("assert");
 
-var assert = require('assert');
+describe("String#split", function() {
 
-// Describe the specivications
-describe('String#split', function() {
+    it("should return an array of fruits", function() {
 
-    // Specification with a title and code to run
-    it('should return an array of fruits', function() {
         assert(Array.isArray('Apple,Orange,Mango'.split(',')));
+
     });
+
 });
 
-// Returns an array made from passed CSV string
 function getFruits(str) {
+
     return str.split(',');
+
 }
 
-// Make function available for testing
 module.exports = getFruits;

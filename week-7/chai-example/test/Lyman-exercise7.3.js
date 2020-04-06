@@ -1,25 +1,29 @@
-function fruits(str) {
+/*
+============================================
+; Title:  Chai Example
+; Author: Ashleigh Lyman
+; Date:   04 April 2020
+; Description: chai Example
+;===========================================
+*/
 
-    return str.split(',');
+//Header
+var header = require('../Lyman-header');
+console.log(header.display('Ashleigh', 'Lyman', 'Exercise 7.3 - Chai Example'));
 
-}
 
-module.exports = fruits;
+var fruits = require("../Lyman-fruits");
 
-var fruits = require("../fruits");
 
-var chai = require("chai");
-
+var chai = require('chai');
 var assert = chai.assert;
 
-describe("fruits", function() {
+describe('fruits', function() {
 
-    it("should return an array of fruits", function() {
 
+    it('should return an array of fruits', function() {
         var f = fruits('Apple,Orange,Mango');
-
         assert(Array.isArray(f));
-
     });
 
 });
