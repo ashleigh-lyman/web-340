@@ -1,0 +1,16 @@
+<form action="/process" method="post">
+
+    <div class="col form-group">
+        <label for="firstName">First Name</label>
+        <input type="input" name="firstName" id="firstName" class="form-control  form-control-lg" />
+    </div>
+
+    <div class="col form-group">
+        <label for="lastName">Last Name</label>
+        <input type="input" name="lastName" id="lastName" class="form-control  form-control-lg" />
+    </div>
+
+    <input name="_csrf" value="<%= csrfToken %>" type="hidden">
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
