@@ -14,15 +14,17 @@ console.log(header.display('Ashleigh', 'Lyman', 'Exercise 7.4 - EMS project', '0
 //Empty Line
 console.log("\n");
 
-var mongoose = require("mongoose");
+// Require statements
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var Schema = mongoose.Schema;
-
-var employeeSchema = new Schema({
-    firstName: String,
-    lastName: String
+// Employee Schema
+let EmployeeSchema = new Schema({
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: false },
+    empID: { type: String, required: true },
+    empTitle: { type: String, required: false },
 });
 
-var Employee = mongoose.model("Employee", employeeSchema);
-
-module.exports = Employee;
+// Export the model so its publicly available.
+module.exports = mongoose.model('Employee', EmployeeSchema);

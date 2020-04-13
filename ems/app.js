@@ -33,6 +33,7 @@ var mongoDB = "mongodb+srv://admin:Lymanfamily@buwebdev-cluster-1-akyor.mongodb.
 mongoose.connect(mongoDB, {
     useMongoClient: true
 });
+
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 
@@ -60,6 +61,8 @@ app.use(bodyParser.urlencoded({
 
 app.use(cookieParser());
 app.use(csrfProtection);
+
+
 app.use(function(request, response, next) {
     var token = request.csrfToken();
     response.cookie('XSRF-TOKEN', token);
@@ -73,28 +76,69 @@ app.set("view engine", "ejs");
 
 
 //HTTP GET
+
+
+//employee function. render index
 app.get("/", function(request, response) {
-    //employee function. render index
-    Employee.find({}, function(err, employees) {
+    Employee.find({}, function(error, employees) {
+        if (error) {
+            console.log(error);
+            throw error;
+        } else {
+            console.log(employees);
+            response.render('index', {
+                title: 'EMS Home Page',
+                employees: employees
+            });
+        };
+    });
+});
+
+app.get("/new", function(request, response) {
+    response.render("new", {
+        title: "New EMS Entry"
+    });
+});
+
+app.post("/process", function(request, response) {
+
+    debugger;
+    if (!request.body.firstName) {
+        response.status(400).send('Entries must have a name');
+        return;
+    }
+    if (!request.body.empID) {
+        response.status(400).send('Entries must have an employee number');
+        return;
+    }
+    if (!request.body.empTitle) {
+        response.status(400).send('Entries must have a title');
+        return;
+    }
+
+    var employeeFirstName = request.body.firstName;
+    var employeeLastName = request.body.lastName;
+    var empID = request.body.empID;
+    var empTitle = request.body.empTitle;
+    console.log(employeeFirstName + " " + employeeLastName);
+
+    var employee = new Employee({
+        firstName: employeeFirstName,
+        lastName: employeeLastName,
+        empID: empID,
+        empTitle: empTitle,
+    });
+
+    employee.save(function(err) {
+        debugger;
         if (err) {
             console.log(err);
             throw err;
         } else {
-            console.log(employees);
-            response.render('index', {
-                title: 'New Employee Entry Page',
-                employees: employees
-            })
+            console.log(employeeFirstName + ' saved successfully!');
+            response.redirect('/');
         }
     });
-});
-
-
-app.post("/process", function(request, response) {
-
-    console.log(request.body.txtName);
-
-    response.redirect("/");
 
 });
 

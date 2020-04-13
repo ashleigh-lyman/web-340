@@ -9,36 +9,31 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th>01</th>
-                <td>Bach</td>
-                <td>Sebastian</td>
-                <td>Musician</td>
-            </tr>
-            <tr>
-                <th>02</th>
-                <td>Earhart</td>
-                <td>Amelia</td>
-                <td>Pilot</td>
-            </tr>
-            <tr>
-                <th>03</th>
-                <td>Edison</td>
-                <td>Thomas</td>
-                <td>Inventor</td>
-            </tr>
-            <tr>
-                <th>04</th>
-                <td>Lincoln</td>
-                <td>Abraham</td>
-                <td>President</td>
-            </tr>
-            <tr>
-                <th>05</th>
-                <td>O'Keeffe</td>
-                <td>Georgia</td>
-                <td>Artist</td>
-            </tr>
+            <% if (employees.length) { %>
+                <% employees.forEach(function (emp) { %>
+                    <tr>
+                        <th scope="row">
+                            <%= emp.empID %>
+                        </th>
+                        <td>
+                            <%= emp.firstName %>
+                        </td>
+                        <td>
+                            <%= emp.lastName %>
+                        </td>
+                        <td>
+                            <%= emp.empTitle %>
+                        </td>
+                    </tr>
+                    <% }) %>
+                        <% } else { %>
+                            <tr>
+                                <td>
+                                    No employees<br />
+                                    <a href="/new" class="">Click</a> to add one
+                                </td>
+                            </tr>
+                            <% } %>
         </tbody>
     </table>
 </table>
