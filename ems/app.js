@@ -2,14 +2,14 @@
 =======================================
 ; Title:  app.js
 ; Author: Ashleigh Lyman
-; Date:   07 April 2020
-; Description: EMS project - Helmet
+; Date:   19 April 2020
+; Description: EMS project
 ;======================================
 */
 
 //Header
 var header = require('../Lyman-header');
-console.log(header.display('Ashleigh', 'Lyman', 'Exercise 8.2 - EMS project - Helmet', '04/07/2020'));
+console.log(header.display('Ashleigh', 'Lyman', 'Exercise 9.2 - EMS project', '04/19/2020'));
 
 //Empty Line
 console.log("\n");
@@ -73,6 +73,7 @@ app.use(function(request, response, next) {
 //HTTP SET
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
+app.set('port', process.env.PORT || 8080);
 
 
 //HTTP GET
@@ -98,6 +99,36 @@ app.get("/new", function(request, response) {
     response.render("new", {
         title: "New EMS Entry"
     });
+});
+
+app.get("/view/:queryName", function(request, response) {
+
+    var queryName = request.params.queryName;
+
+    Employee.find({ 'name': queryName }, function(error, employees) {
+
+        if (error) throw error;
+
+        console.log(employees);
+
+        if (employees.length > 0) {
+
+            response.render("view", {
+
+                title: "Employee Records",
+
+                employee: employees
+
+            })
+
+        } else {
+
+            response.redirect("/list")
+
+        }
+
+    });
+
 });
 
 app.post("/process", function(request, response) {
@@ -144,6 +175,6 @@ app.post("/process", function(request, response) {
 
 
 //Server. Display message
-http.createServer(app).listen(8080, function() {
-    console.log("Application started on port 8080!");
+http.createServer(app).listen(app.get('port'), function() {
+    console.log('Application started on port ' + app.get('port'));
 });

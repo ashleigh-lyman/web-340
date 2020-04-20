@@ -1,39 +1,45 @@
-<table class="table-responsive">
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th>Employee #</th>
-                <th>Last</th>
-                <th>First</th>
-                <th>Title</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% if (employees.length) { %>
-                <% employees.forEach(function (emp) { %>
-                    <tr>
-                        <th scope="row">
-                            <%= emp.empID %>
-                        </th>
-                        <td>
-                            <%= emp.firstName %>
-                        </td>
-                        <td>
-                            <%= emp.lastName %>
-                        </td>
-                        <td>
-                            <%= emp.empTitle %>
-                        </td>
-                    </tr>
-                    <% }) %>
-                        <% } else { %>
-                            <tr>
-                                <td>
-                                    No employees<br />
-                                    <a href="/new" class="">Click</a> to add one
-                                </td>
-                            </tr>
-                            <% } %>
-        </tbody>
+<!DOCTYPE html>
+<html lang="en">
+<%- include("header"); %>
+
+    <table class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Employee #</th>
+                    <th>Last</th>
+                    <th>First</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (employees.length) { %>
+                    <% employees.forEach(function (emp) { %>
+                        <tr>
+                            <th scope="row">
+                                <%= emp.empID %>
+                            </th>
+                            <td>
+                                <%= emp.firstName %>
+                            </td>
+                            <td>
+                                <%= emp.lastName %>
+                            </td>
+                            <td>
+                                <%= emp.empTitle %>
+                            </td>
+                        </tr>
+                        <% }) %>
+                            <% } else { %>
+                                <tr>
+                                    <td>
+                                        No employees<br />
+                                        <a href="/new" class="">Click</a> to add one
+                                    </td>
+                                </tr>
+                                <% } %>
+            </tbody>
+        </table>
     </table>
-</table>
+
+</html>

@@ -1,6 +1,33 @@
-<div class="page-header">
-    <div class="container">
-        <h1 class="header-one">EMS <br /> <small class="header-two">Employee Management System</small></h1>
-    </div>
+<%- include("header"); %>
+    <div class="page-header">
+        <div class="container" style="text-align: center; padding: 10px; padding-top: 20px">
+            <h1 class="header-one" style="font-family: cursive">EMS <br /> <small class="header-two">Employee Management System</small></h1>
+        </div>
 
-</div>
+        <div role="main" class="container" style="width: 50%;">
+
+            <br/><br/>
+
+            <h2 style="text-align: center">-- Employee Record--</h2>
+
+            <div>
+
+                <div class="form-group">
+
+                    <txtName>
+
+                        <label for="txtName ">Name:</label>
+
+                        <input type="text " class="form-control " id="txtName " value="<%= employees[0].name %>" name="txtName" />
+                </div>
+
+                <a href="/">Return to Employees</a>
+
+            </div>
+
+            <br /><br />
+
+
+
+        </div>
+    </div>
